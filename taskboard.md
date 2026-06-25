@@ -278,7 +278,7 @@ git push origin feature/agent-conversationnel
 | [ ] | T-22 | `US1` — Login | `AUTH` | High | 1h | **Files to Create/Edit:**<br>- `sail artisan make:request LoginRequest`<br>&nbsp;&nbsp;- `rules()`: `email\|required\|email`, `password\|required\|string`<br>- `AuthController@login`:<br>&nbsp;&nbsp;- `Auth::attempt()` → return **401** if fails<br>&nbsp;&nbsp;- `$user->createToken('auth_token')->plainTextToken`<br>&nbsp;&nbsp;- Return `{ data: UserResource, token, token_type: 'Bearer' }` with **200**<br>- **Route:** `POST /api/login` |
 | [ ] | T-23 | `US1` — Logout | `AUTH` | High | 0.5h | **Files to Edit:**<br>- `AuthController@logout`:<br>&nbsp;&nbsp;- `$request->user()->currentAccessToken()->delete()`<br>&nbsp;&nbsp;- Return `{ message: 'Logged out successfully' }` with **200**<br>- **Route:** `POST /api/logout` → protected by `auth:sanctum` |
 | [ ] | T-24 | Protect all private routes with `auth:sanctum` | `AUTH` | High | 0.3h | **Files to Edit:**<br>- `routes/api.php`: wrap all blueprint + content + chat routes in `Route::middleware('auth:sanctum')->group(function () { ... })`<br>- Test: request to `/api/blueprints` without token → must return **401** |
-| [ ] | T-25 | Scribe PHPDoc — Auth endpoints | `DOC` | High | 0.5h | **Action:**<br>- Add `@group`, `@bodyParam`, `@response` annotations to all 3 `AuthController` methods<br>- `sail artisan scribe:generate` → verify auth endpoints appear in docs |
+| [x] | T-25 | Scribe PHPDoc — Auth endpoints | `DOC` | High | 0.5h | **Action:**<br>- Add `@group`, `@bodyParam`, `@response` annotations to all 3 `AuthController` methods<br>- `sail artisan scribe:generate` → verify auth endpoints appear in docs |
 
 **Sprint 2 — Definition of Done:**
 
