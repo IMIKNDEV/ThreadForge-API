@@ -45,7 +45,7 @@ Raw Notes / Article / README
          ↓ (202 Accepted — instant)
    Background Job (async)
          ↓
-   AI Structured Output (Grok)
+   AI Structured Output (Groq)
          ↓
    Post saved to DB (hook, body points, score, hashtags)
          ↓
@@ -65,7 +65,7 @@ You define your personal style rules once (called a **Blueprint**), submit raw c
 | Database | MySQL 8.0 |
 | Auth | Laravel Sanctum (Bearer Tokens) |
 | Containerization | Laravel Sail (Docker) |
-| AI SDK | `laravel/ai` (Grok / xAI) |
+| AI SDK | `laravel/ai` (Groq) |
 | Queue Driver | Database |
 | API Docs | Scribe (`knuckleswtf/scribe`) |
 | Dev Tools | Laravel Debugbar |
@@ -104,10 +104,10 @@ composer install
 cp .env.example .env
 ```
 
-**4. Add your Grok API key to `.env`**
+**4. Add your Groq API key to `.env`**
 
 ```env
-GROK_API_KEY=xai-your-key-here
+GROQ_API_KEY=groq-your-key-here
 ```
 
 **5. Start Docker containers**
@@ -159,7 +159,7 @@ sail artisan queue:work
 | `DB_USERNAME` | Database user | `sail` |
 | `DB_PASSWORD` | Database password | `password` |
 | `QUEUE_CONNECTION` | Queue driver | `database` |
-| `GROK_API_KEY` | Your Grok (xAI) key | `xai-...` |
+| `GROQ_API_KEY` | Your Groq key | `groq-...` |
 | `DEBUGBAR_ENABLED` | Show Debugbar (dev only) | `true` |
 
 ---
@@ -687,7 +687,7 @@ The agent remembers your conversation — follow-up questions work naturally:
 
 ### Layer 1 — Structured Output
 
-When the queue job processes your raw content, it calls the Grok API through the `laravel/ai` SDK with a **strict JSON schema** imposed. The AI must return exactly this structure — no extra fields, no missing fields:
+When the queue job processes your raw content, it calls the Groq API through the `laravel/ai` SDK with a **strict JSON schema** imposed. The AI must return exactly this structure — no extra fields, no missing fields:
 
 ```json
 {
@@ -785,7 +785,7 @@ sail artisan scribe:generate
 ## Key Concepts
 
 **Why `202 Accepted` instead of `200 OK` for content generation?**
-Calling the Grok API can take 5–15 seconds. Returning `202` immediately and processing in the background prevents HTTP timeouts and keeps the API responsive. The client polls `GET /api/posts` to check when the result is ready.
+Calling the Groq API can take 5–15 seconds. Returning `202` immediately and processing in the background prevents HTTP timeouts and keeps the API responsive. The client polls `GET /api/posts` to check when the result is ready.
 
 **Why Eloquent Casts instead of `json_decode`?**
 Casts are declared once on the model and apply everywhere — controllers, resources, jobs, tinker. Manual `json_decode` in multiple places creates inconsistency and bugs. With casts, `$post->body_points` is always a PHP array, period.
@@ -798,4 +798,4 @@ An AI that answers from a static prompt will hallucinate your blueprint rules an
 
 ---
 
-*ThreadForge API — Built with Laravel 13 · PHP 8.5 · Grok (xAI)*
+*ThreadForge API — Built with Laravel 13 · PHP 8.5 · Groq*
