@@ -30,10 +30,10 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::apiResource('blueprints', BlueprintController::class);
 
     // Content & Posts (Sprint 4)
-    // Route::post('content/repurpose', [RawContentController::class, 'store']);
-    // Route::get('posts', [PostController::class, 'index']);
-    // Route::get('posts/{post}', [PostController::class, 'show']);
-    // Route::patch('posts/{post}', [PostController::class, 'update']);
+    Route::post('content/repurpose', [RawContentController::class, 'store']);
+    Route::get('posts', [PostController::class, 'index']);
+    Route::get('posts/{post}', [PostController::class, 'show']);
+    Route::patch('posts/{post}', [PostController::class, 'update']);
 
     // Ghostwriter Agent Chat (Sprint 5)
     // Route::post('posts/{post}/chat', [ChatController::class, 'ask']);
