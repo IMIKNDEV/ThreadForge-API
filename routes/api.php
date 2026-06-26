@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Blueprints (Sprint 3)
-    // Route::apiResource('blueprints', BlueprintController::class);
+    Route::apiResource('blueprints', BlueprintController::class);
 
     // Content & Posts (Sprint 4)
     // Route::post('content/repurpose', [RawContentController::class, 'store']);

@@ -1,0 +1,496 @@
+name: 'Blueprint Management'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/blueprints
+    metadata:
+      custom: []
+      groupName: 'Blueprint Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List all blueprints'
+      description: 'Returns all blueprints belonging to the authenticated user, with the count of associated raw contents.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "name": "Tech LinkedIn Posts",
+                "tone": "Professional & Educational",
+                "max_hashtag": 5,
+                "max_characters": 280,
+                "banned_word": "clickbait, scam",
+                "extra_rules": "Focus on PHP and Laravel ecosystem.",
+                "raw_contents_count": 3,
+                "created_at": "24/06/2026"
+              }
+            ]
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/blueprints
+    metadata:
+      custom: []
+      groupName: 'Blueprint Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a blueprint'
+      description: 'Creates a new blueprint campaign for the authenticated user.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'The blueprint name.'
+        required: true
+        example: 'Tech LinkedIn Posts'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      tone:
+        custom: []
+        name: tone
+        description: 'The writing tone.'
+        required: true
+        example: 'Professional & Educational'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      max_hashtag:
+        custom: []
+        name: max_hashtag
+        description: 'Maximum number of hashtags (0-30).'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      max_characters:
+        custom: []
+        name: max_characters
+        description: 'Maximum character count (1-280).'
+        required: true
+        example: 280
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      banned_word:
+        custom: []
+        name: banned_word
+        description: 'optional Comma-separated banned words.'
+        required: false
+        example: 'clickbait, scam'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      extra_rules:
+        custom: []
+        name: extra_rules
+        description: 'optional Additional style rules.'
+        required: false
+        example: 'Focus on PHP and Laravel ecosystem.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Tech LinkedIn Posts'
+      tone: 'Professional & Educational'
+      max_hashtag: 5
+      max_characters: 280
+      banned_word: 'clickbait, scam'
+      extra_rules: 'Focus on PHP and Laravel ecosystem.'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "name": "Tech LinkedIn Posts",
+              "tone": "Professional & Educational",
+              "max_hashtag": 5,
+              "max_characters": 280,
+              "banned_word": "clickbait, scam",
+              "extra_rules": "Focus on PHP and Laravel ecosystem.",
+              "raw_contents_count": 0,
+              "created_at": "24/06/2026"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+            "message": "The name field is required. (and 2 more errors)",
+            "errors": {
+              "name": ["The name field is required."],
+              "tone": ["The tone field is required."],
+              "max_hashtag": ["The max hashtag field is required."]
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/blueprints/{id}'
+    metadata:
+      custom: []
+      groupName: 'Blueprint Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a single blueprint'
+      description: 'Returns the specified blueprint if it belongs to the authenticated user.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the blueprint.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "name": "Tech LinkedIn Posts",
+              "tone": "Professional & Educational",
+              "max_hashtag": 5,
+              "max_characters": 280,
+              "banned_word": "clickbait, scam",
+              "extra_rules": "Focus on PHP and Laravel ecosystem.",
+              "raw_contents_count": 3,
+              "created_at": "24/06/2026"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+            "message": "Not found"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/blueprints/{id}'
+    metadata:
+      custom: []
+      groupName: 'Blueprint Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a blueprint'
+      description: 'Updates the specified blueprint if it belongs to the authenticated user.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the blueprint.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'optional The blueprint name.'
+        required: false
+        example: 'Tech LinkedIn Posts'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      tone:
+        custom: []
+        name: tone
+        description: 'optional The writing tone.'
+        required: false
+        example: 'Professional & Educational'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      max_hashtag:
+        custom: []
+        name: max_hashtag
+        description: 'optional Maximum number of hashtags (0-30).'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      max_characters:
+        custom: []
+        name: max_characters
+        description: 'optional Maximum character count (1-280).'
+        required: false
+        example: 280
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      banned_word:
+        custom: []
+        name: banned_word
+        description: 'optional Comma-separated banned words.'
+        required: false
+        example: 'clickbait, scam'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      extra_rules:
+        custom: []
+        name: extra_rules
+        description: 'optional Additional style rules.'
+        required: false
+        example: 'Focus on PHP and Laravel ecosystem.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Tech LinkedIn Posts'
+      tone: 'Professional & Educational'
+      max_hashtag: 5
+      max_characters: 280
+      banned_word: 'clickbait, scam'
+      extra_rules: 'Focus on PHP and Laravel ecosystem.'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "name": "Updated Name",
+              "tone": "Updated Tone",
+              "max_hashtag": 3,
+              "max_characters": 200,
+              "banned_word": null,
+              "extra_rules": "Updated rules.",
+              "raw_contents_count": 3,
+              "created_at": "24/06/2026"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+            "message": "Not found"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/blueprints/{id}'
+    metadata:
+      custom: []
+      groupName: 'Blueprint Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a blueprint'
+      description: 'Deletes the specified blueprint if it belongs to the authenticated user.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the blueprint.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "message": "Blueprint deleted"
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+            "message": "Not found"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
