@@ -63,7 +63,7 @@ class GeneratePostJob implements ShouldQueue
             ),
         );
 
-        $data = $response->toArray();
+        $data = json_decode($response->text, true);
 
         $technicalScore = (int) ($data['technical_readability_score'] ?? 0);
         $technicalScore = max(0, min(100, $technicalScore));

@@ -10,6 +10,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property-read int $id
+ * @property-read int $user_id
+ * @property-read string $name
+ * @property-read string $tone
+ * @property-read int $max_hashtag
+ * @property-read int $max_characters
+ * @property-read string|null $banned_word
+ * @property-read string|null $extra_rules
+ * @property-read \Carbon\CarbonInterface $created_at
+ * @property-read \Carbon\CarbonInterface $updated_at
+ */
 class Blueprint extends Model
 {
     /** @use HasFactory<BlueprintFactory> */
