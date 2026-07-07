@@ -9,6 +9,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property-read int $id
+ * @property-read int $raw_content_id
+ * @property-read string $hook
+ * @property-read array $body_points
+ * @property-read int|null $technical_readability_score
+ * @property-read array|null $suggested_hashtags
+ * @property-read string|null $tone_compliance_justification
+ * @property-read array|null $payload_brut
+ * @property-read \App\Enums\PostStatusEnum $statut_publication
+ * @property-read \Carbon\CarbonInterface $created_at
+ * @property-read \Carbon\CarbonInterface $updated_at
+ */
 class Post extends Model
 {
     /** @use HasFactory<PostFactory> */
@@ -35,6 +48,7 @@ class Post extends Model
         ];
     }
 
+    /** @return BelongsTo<RawContent, $this> */
     public function rawContent(): BelongsTo
     {
         return $this->belongsTo(RawContent::class);
