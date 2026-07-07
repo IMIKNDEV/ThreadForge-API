@@ -27,7 +27,7 @@ class PostStatusEnumTest extends TestCase
         try {
             $cases = PostStatusEnum::cases();
 
-            $this->assertCount(3, $cases);
+            $this->assertCount(4, $cases);
             $this->assertContains(PostStatusEnum::Draft, $cases);
             $this->assertContains(PostStatusEnum::Archived, $cases);
             $this->assertContains(PostStatusEnum::Posted, $cases);
