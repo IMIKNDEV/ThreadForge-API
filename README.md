@@ -782,6 +782,22 @@ sail artisan scribe:generate
 
 ---
 
+## Tests
+
+Pour lancer les tests localement :
+
+```bash
+php artisan test
+```
+
+## CI
+
+Les tests sont automatiquement lancés via GitHub Actions à chaque push/PR sur `main`. Voir l'onglet **Actions** du repo.
+
+## Déploiement
+
+L'API est accessible en ligne à l'adresse : http://9.160.107.240
+
 ## Key Concepts
 
 **Why `202 Accepted` instead of `200 OK` for content generation?**
