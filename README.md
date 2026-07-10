@@ -790,9 +790,15 @@ Pour lancer les tests localement :
 php artisan test
 ```
 
+![Tests](docs/tests.png)
+
 ## CI
 
 Les tests sont automatiquement lancés via GitHub Actions à chaque push/PR sur `main`. Voir l'onglet **Actions** du repo.
+
+![Workflow running](docs/workflow%20running.png)
+
+![Workflow test](docs/workflow%20test.png)
 
 ## Déploiement
 
