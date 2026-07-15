@@ -804,6 +804,42 @@ Les tests sont automatiquement lancés via GitHub Actions à chaque push/PR sur 
 
 L'API est accessible en ligne à l'adresse : http://9.160.107.240
 
+## Labs Azure
+
+### Azure Portal — Subscription Overview
+Shows the `sprint-devops-simplon` subscription in the Azure Portal Subscriptions page.
+![Azure Portal Subscription](./docs/brave_screenshot_portal.azure.com.png)
+
+### Credit Balance
+Credit remaining visible in Cost Management, confirming the free trial credit amount.
+![Credit Balance](./docs/cost%20management%20budget.png)
+
+### Subscription ID and Tenant ID
+Both IDs displayed with middle portions masked for security (e.g. `2a57cf7a-****-****-****-fe3d9449e8f1`).
+![Subscription and Tenant ID](./docs/intra%20ID.png)
+
+### Budget and Alert Thresholds
+Budget configuration showing two alert conditions at 80% and 100% usage.
+![Budget Alerts](./docs/budget%20alerts.png)
+
+### Free Trial Credit Banner
+The subscription Overview page showing the Free Trial / credit status message.
+![Free Trial Banner](./docs/azure%20subscription%20name.png)
+
+### Microsoft Entra ID — Users
+User list in Microsoft Entra ID showing the `devops-<prénom>` account.
+![Entra ID Users](./docs/intra%20id%20users.png)
+
+### Access Control (IAM) — Owner Role
+Role assignments tab on the subscription showing `devops-<prénom>` with the Owner role.
+![IAM Role Assignment](./docs/role%20assignement%20tab%20iam.png)
+
+### Portal Connected as Devops User
+Azure Portal session authenticated as `devops-<prénom>`, confirmed via the avatar dropdown.
+![Devops Account](./docs/devops%20account.png)
+
+---
+
 ## Key Concepts
 
 **Why `202 Accepted` instead of `200 OK` for content generation?**
